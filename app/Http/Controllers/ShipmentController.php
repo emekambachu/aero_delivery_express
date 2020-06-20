@@ -6,6 +6,7 @@ use App\Parcel;
 use App\Shipment;
 use App\ShipmentHistory;
 use App\User;
+use App\UserDetails;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
@@ -30,10 +31,7 @@ class ShipmentController extends Controller
      */
     public function create()
     {
-        $parcels = Parcel::all();
-        $users = User::all();
-
-        return view('controlpanel.shipments.create', compact('parcels', 'users'));
+        return view('controlpanel.shipments.create');
     }
 
     /**
@@ -59,26 +57,51 @@ class ShipmentController extends Controller
 
         $input['tracking_id'] = TrackingId();
 
-        $shipment = Shipment::create($input);
+        $userDetails = UserDetails::create([
+
+            'sender_name' => $input['sender_name'],
+            'sender_email' => $input['sender_email'],
+            'sender_mobile' => $input['sender_mobile'],
+            'sender_country' => $input['sender_country'],
+            'sender_address' => $input['sender_address'],
+
+            'receiver_name' => $input['receiver_name'],
+            'receiver_email' => $input['receiver_email'],
+            'receiver_mobile' => $input['receiver_mobile'],
+            'receiver_country' => $input['receiver_country'],
+            'receiver_address' => $input['receiver_address'],
+
+        ]);
+
+        $shipment = Shipment::create([
+            'user_detail_id' => $userDetails->id,
+            'parcel' => $input['parcel'],
+            'tracking_id' => $input['tracking_id'],
+        ]);
 
         //Add all values to data array
         $data = [
-            'parcel' => $shipment->parcel->name,
-            'email' => $shipment->user->email,
-            'name' => $shipment->user->name,
+            'parcel' => $shipment->parcel,
+            'sender_name' => $userDetails->sender_name,
+            'sender_email' => $userDetails->sender_email,
+            'sender_mobile' => $userDetails->sender_mobile,
+            'sender_country' => $userDetails->sender_country,
+            'receiver_name' => $userDetails->receiver_name,
+            'receiver_email' => $userDetails->receiver_email,
+            'receiver_country' => $userDetails->receiver_country,
             'tracking_id' => $input['tracking_id'],
         ];
 
         //send email to user
         Mail::send('emails.new-shipment', $data, static function($message) use ($data){
             $message->from('info@aerodeliveryexpress.com', 'Aero Delivery Express');
-            $message->to($data['email'], $data['name']);
+            $message->to($data['receiver_email'], $data['receiver_name']);
             $message->replyTo('info@aerodeliveryexpress.com', 'Aero Delivery Express');
             $message->subject('Your shipment has been initiated');
         });
 
         //flash notification
-        Session::flash('success', 'Shipment for '.$data['name'].' has been initiated');
+        Session::flash('success', 'Shipment for '.$data['receiver_name'].' has been initiated');
         return redirect()->back();
 
     }
@@ -158,8 +181,8 @@ class ShipmentController extends Controller
         $shipment->save();
 
         $data = [
-            'name' => $shipment->user->name,
-            'email' => $shipment->user->email,
+            'name' => $shipment->userDetail->receiver_name,
+            'email' => $shipment->userDetail->receiver_name,
             'tracking_id' => $shipment->tracking_id,
             'email_subject' => $email_subject,
             'is_active' => $shipment->is_active,

@@ -9,15 +9,13 @@ class Shipment extends Model
     protected $fillable = [
 
         'parcel',
-        'user_details_id',
+        'user_detail_id',
         'tracking_id',
-        'origin',
-        'destination',
         'is_active',
 
     ];
 
-    public function userDetails(){
+    public function userDetail(){
         return $this->belongsTo(UserDetails::class);
     }
 

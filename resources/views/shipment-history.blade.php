@@ -27,19 +27,19 @@
         <table class="table table-dark">
             <tbody>
             <tr>
-                <td><strong>Recipient Name:</strong> {{ $shipment->user->name }} </td>
-                <td><strong>Recipient Email:</strong> {{ $shipment->user->email }}</td>
-                <td><strong>Recipient Mobile:</strong> {{ $shipment->user->mobile }}</td>
+                <td><strong>Recipient Name:</strong> {{ $shipment->userDetail->receiver_name }} </td>
+                <td><strong>Recipient Email:</strong> {{ $shipment->userDetail->receiver_email }}</td>
+                <td><strong>Destination:</strong> {{ $shipment->userDetail->receiver_country }}</td>
             </tr>
             <tr>
-                <td><strong>Parcel Name:</strong> {{ $shipment->parcel->name }} </td>
-                <td><strong>Parcel Weight:</strong> {{ $shipment->parcel->weight }}KG</td>
-                <td><strong>Parcel Description:</strong> {{ $shipment->parcel->description }}</td>
+                <td><strong>Sender Name:</strong> {{ $shipment->userDetail->sender_name }} </td>
+                <td><strong>Sender Email:</strong> {{ $shipment->userDetail->sender_email }}</td>
+                <td><strong>Sender Mobile:</strong> {{ $shipment->userDetail->sender_mobile }}</td>
             </tr>
             <tr>
                 <td><strong>Tracking ID:</strong> {{ $shipment->tracking_id }}</td>
-                <td><strong>Shipment Origin:</strong> {{ $shipment->origin }}</td>
-                <td><strong>Shipment Destination:</strong> {{ $shipment->destination }}</td>
+                <td><strong>Shipment Origin:</strong> {{ $shipment->userDetail->sender_country }}</td>
+{{--                <td><strong>Shipment Destination:</strong> {{ $shipment->destination }}</td>--}}
             </tr>
             <tr>
                 <td><strong>Shipment Date:</strong> {{date('jS \of F Y', strtotime($shipment->created_at))}}</td>
@@ -65,8 +65,9 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
-                <th scope="col">Status</th>
                 <th scope="col">Location</th>
+                <th scope="col">Description</th>
+                <th scope="col">Status</th>
                 <th scope="col">Date</th>
             </tr>
             </thead>
@@ -76,8 +77,9 @@
                 @foreach($checkpoints as $checkpoint)
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
-                        <td>{{ $checkpoint->status }}</td>
                         <td>{{ $checkpoint->location }}</td>
+                        <td>{{ $checkpoint->description }}</td>
+                        <td>{{ $checkpoint->status }}</td>
                         <td>{{date('jS \of F Y', strtotime($checkpoint->created_at))}}</td>
                     </tr>
                 @endforeach
@@ -87,7 +89,5 @@
             </tbody>
         </table>
 
-
     </div><!-- /.col-lg-8 -->
-
 @endsection

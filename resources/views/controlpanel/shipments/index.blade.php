@@ -22,7 +22,8 @@
                             <tr class="titles">
                                 <th>S/N</th>
                                 <th>Parcel</th>
-                                <th>User</th>
+                                <th>Sender</th>
+                                <th>Receiver</th>
                                 <th>Tracking Id</th>
                                 <th>Origin</th>
                                 <th>Destination</th>
@@ -37,11 +38,12 @@
 
                                     <tr>
                                         <td class="c-table__cell"> {{ $loop->iteration }} </td>
-                                        <td class="c-table__cell"> {{ $ship->parcel ? $ship->parcel->name: 'No Parcel' }} </td>
-                                        <td class="c-table__cell"> {{ $ship->user ? $ship->user->name: 'Not Assigned' }} </td>
+                                        <td class="c-table__cell"> {{ $ship->parcel }} </td>
+                                        <td class="c-table__cell"> {{ $ship->userDetail ? $ship->userDetail->sender_name: 'Not Assigned' }} - {{ $ship->userDetail ? $ship->userDetail->sender_email: 'Not Assigned' }} </td>
+                                        <td class="c-table__cell"> {{ $ship->userDetail ? $ship->userDetail->receiver_name: 'Not Assigned' }} - {{ $ship->userDetail ? $ship->userDetail->receiver_email: 'Not Assigned' }} </td>
                                         <td class="c-table__cell"> {{ $ship->tracking_id }} </td>
-                                        <td class="c-table__cell"> {{ $ship->origin }} </td>
-                                        <td class="c-table__cell"> {{ $ship->destination }} </td>
+                                        <td class="c-table__cell"> {{ $ship->userDetail ? $ship->userDetail->sender_country: 'Not Assigned' }} </td>
+                                        <td class="c-table__cell"> {{ $ship->userDetail ? $ship->userDetail->receiver_country: 'Not Assigned' }}</td>
                                         <td class="c-table__cell">{{date('jS \of F Y', strtotime($ship->created_at))}}</td>
                                         <td>
                                             <a class="mb-2" href="{{ action('ShipmentHistoryController@shipmentCheckpoints', $ship->id) }}">

@@ -42,9 +42,7 @@ Route::get('shipment-status', static function () {
     return view('shipment-status');
 });
 
-Route::get('control-panel', static function (){
-    return view('controlpanel.index');
-});
+Route::get('control-panel', 'UserCOntroller@dashboard');
 
 Route::resource('control-panel/users', 'UserController');
 Route::resource('control-panel/parcels', 'ParcelController');
@@ -69,4 +67,5 @@ Auth::routes([
     'verify' => false, // Disable Email Verification
 ]);
 
-Route::get('/home', 'HomeController@index')->name('home');
+// Perform logout
+Route::get('logout', 'Auth\LoginController@logout')->name('logout');

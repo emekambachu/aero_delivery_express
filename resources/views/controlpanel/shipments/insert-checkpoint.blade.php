@@ -15,9 +15,10 @@
             <p><strong>Shipment Details:</strong></p>
             <p>
                 <strong>Tracking ID:</strong> {{ $shipment->tracking_id }}<br>
-                <strong>Origin:</strong> {{ $shipment->origin }}<br>
-                <strong>Destination:</strong> {{ $shipment->destination }}<br>
-                <strong>Name of User:</strong> {{ $shipment->user->name }}<br>
+                <strong>Origin:</strong> {{ $shipment->userDetail ? $shipment->userDetail->sender_country : 'Not Assigned' }}<br>
+                <strong>Destination:</strong> {{ $shipment->userDetail ? $shipment->userDetail->receiver_country : 'Not Assigned' }}<br>
+                <strong>Sender:</strong> {{ $shipment->userDetail ? $shipment->userDetail->sender_name : 'Not Assigned' }}<br>
+                <strong>Receiver:</strong> {{ $shipment->userDetail ? $shipment->userDetail->receiver_name : 'Not Assigned' }}<br>
             </p>
 
             <form method="post" action="{{ action('ShipmentHistoryController@submitCheckpoint', $shipment->id) }}">
@@ -29,8 +30,17 @@
 
                 <div class="form-group">
                     <label>Status</label>
-                    <textarea class="form-control" name="status" placeholder="Status of Shipment in this location" required>
+                    <select class="form-control" name="status" required>
+                        <option>Pending</option>
+                        <option>On Hold</option>
+                        <option>Ceased</option>
+                        <option>Clarification</option>
+                    </select>
+                </div>
 
+                <div class="form-group">
+                    <label>Description</label>
+                    <textarea class="form-control" name="description" placeholder="Status of Shipment in this location" required>
                     </textarea>
                 </div>
 

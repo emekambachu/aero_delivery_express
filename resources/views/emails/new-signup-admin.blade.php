@@ -1,4 +1,4 @@
-<img src="{{ asset('swiftlog_logo.png') }}" width="120">
+<img src="{{ asset('aero_delivery_logo2.png') }}" width="120">
 
 <h3>{{ $name }} Has Signed up</h3>
 

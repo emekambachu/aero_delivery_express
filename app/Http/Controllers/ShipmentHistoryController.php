@@ -50,11 +50,12 @@ class ShipmentHistoryController extends Controller
         $shipmentHistory = ShipmentHistory::create($input);
 
         $data = [
-            'name' => $shipmentHistory->shipment->user->name,
-            'email' => $shipmentHistory->shipment->user->email,
+            'name' => $shipmentHistory->shipment->userDetail->receiver_name,
+            'email' => $shipmentHistory->shipment->userDetail->receiver_email,
             'tracking_id' => $shipmentHistory->shipment->tracking_id,
             'location' => $shipmentHistory->location,
-            'status' => $shipmentHistory->location,
+            'description' => $shipmentHistory->description,
+            'status' => $shipmentHistory->status,
         ];
 
         Mail::send('emails.new-checkpoint', $data, static function ($message) use ($data) {

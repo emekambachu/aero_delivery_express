@@ -7,51 +7,42 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <title> @yield('title') - Control Panel</title>
 
     <!--Add bootstrap css CDN at the top-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
 </head>
 
 <body>
 
 <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Control Panel</a>
+    <a class="navbar-brand" href="{{ url('/') }}">
+        <img src="{{ asset('aero_delivery_logo2.png') }}" width="150" alt="">
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
         <ul class="navbar-nav">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="{{ asset('/') }}">Home <span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('users.index') }}">Users</a>
+                <a class="nav-link" href="{{ route('shipments.index') }}">All Shipments</a>
             </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Shipments
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{ route('shipments.index') }}">View all</a>
-                    <a class="dropdown-item" href="{{ route('shipments.create') }}">Add New</a>
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('shipments.create') }}">Create Shipments</a>
             </li>
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Parcel
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{ route('parcels.index') }}">View all</a>
-                    <a class="dropdown-item" href="{{ route('parcels.create') }}">Add New</a>
-                </div>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}">Logout</a>
             </li>
-
 
         </ul>
     </div>

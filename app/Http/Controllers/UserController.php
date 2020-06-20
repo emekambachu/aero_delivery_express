@@ -10,6 +10,21 @@ use Illuminate\Support\Facades\Session;
 class UserController extends Controller
 {
     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    public function dashboard()
+    {
+        return view('controlpanel.index');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
