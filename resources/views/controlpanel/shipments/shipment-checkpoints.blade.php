@@ -17,8 +17,8 @@
                     <p><strong>Shipment Details</strong></p>
                     <p>
                         <strong>Trackng ID:</strong> {{ $shipment->tracking_id }}<br>
-                        <strong>Origin:</strong> {{ $shipment->origin }}<br>
-                        <strong>Destination:</strong> {{ $shipment->destination }}<br>
+                        <strong>Origin:</strong> {{ $shipment->userDetail->sender_country }}<br>
+                        <strong>Destination:</strong> {{ $shipment->userDetail->receiver_country }}<br>
                     </p>
 
                     <div class="table-responsive">

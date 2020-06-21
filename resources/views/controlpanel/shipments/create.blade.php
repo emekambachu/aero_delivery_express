@@ -14,31 +14,32 @@
             <h3>Create Shipments</h3>
             <form method="post" action="{{ route('shipments.store') }}">
                 @csrf
-                <div class="row">
+                <div class="row mb-3">
+                    <div class="col-md-12"><p class="font-weight-bolder">Sender Area</p></div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Sender Name</label>
                             <input name="sender_name" class="form-control" type="text" placeholder="Sender Name" required>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Sender Email</label>
-                            <input name="sender_email" class="form-control" type="email" placeholder="Sender Email" required>
-                        </div>
-                    </div>
+{{--                    <div class="col-md-6">--}}
+{{--                        <div class="form-group">--}}
+{{--                            <label>Sender Email</label>--}}
+{{--                            <input name="sender_email" class="form-control" type="email" placeholder="Sender Email" required>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Sender Mobile</label>
-                            <input name="sender_mobile" class="form-control" type="tel" placeholder="Sender Mobile" required>
+                            <input name="sender_mobile" class="form-control" type="tel" placeholder="Sender Mobile">
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Sender Country</label>
-                            <select id="country" class="form-control" name="sender_country">
+                            <select id="country" class="form-control" name="sender_country" required>
                                 <option value="Afganistan">Afghanistan</option>
                                 <option value="Albania">Albania</option>
                                 <option value="Algeria">Algeria</option>
@@ -289,13 +290,16 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Sender Address</label>
                             <input name="sender_address" class="form-control" type="text" placeholder="Sender Address">
                         </div>
                     </div>
+                </div>
 
+                <div class="row">
+                    <div class="col-md-12"><p class="font-weight-bold">Receiver Area</p></div>
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Receiver Name</label>
@@ -313,14 +317,14 @@
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Receiver Mobile</label>
-                            <input name="receiver_mobile" class="form-control" type="tel" placeholder="Receiver Mobile" required>
+                            <input name="receiver_mobile" class="form-control" type="tel" placeholder="Receiver Mobile">
                         </div>
                     </div>
 
                     <div class="col-md-6">
                         <div class="form-group">
                             <label>Receiver Country</label>
-                            <select id="country" class="form-control" name="receiver_country">
+                            <select id="country" class="form-control" name="receiver_country" required>
                                 <option value="Afganistan">Afghanistan</option>
                                 <option value="Albania">Albania</option>
                                 <option value="Algeria">Algeria</option>
@@ -571,17 +575,20 @@
                         </div>
                     </div>
 
-                    <div class="col-md-12">
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Receiver Address</label>
                             <input name="receiver_address" class="form-control" type="text" placeholder="Receiver Address">
                         </div>
                     </div>
+                </div>
 
-                    <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-12"><p class="font-weight-bold">Parcel</p></div>
+                    <div class="col-md-6">
                         <div class="form-group">
                             <label>Select Parcel</label>
-                            <select class="form-control" name="parcel">
+                            <select class="form-control" name="parcel" required>
                                 <option value="Large Parcel">Large Parcel</option>
                                 <option value="Medium Parcel">Medium Parcel</option>
                                 <option value="Small Parcel">Small Parcel</option>
@@ -591,8 +598,13 @@
                         </div>
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <div class="col-md-6 mt-3">
+                        <label>Parcel Weight (KG)</label>
+                        <input type="number" class="form-control" name="parcel_weight" placeholder="Enter parcel weight (KG)" required>
+                    </div>
                 </div>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
 
         </div>

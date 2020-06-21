@@ -18,6 +18,7 @@ class CreateShipmentsTable extends Migration
             $table->id();
 
             $table->string('parcel');
+            $table->integer('parcel_weight');
 
             $table->integer('user_detail_id')->unsigned()->index();
             $table->foreign('user_detail_id')->references('id')->on('user_details')->onDelete('cascade');

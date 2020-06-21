@@ -48,7 +48,7 @@ class ShipmentController extends Controller
         function TrackingId($length = 6){
             $characters = '0123456789';
             $charactersLength = strlen($characters);
-            $randomString = 'SLINK-TRACK';
+            $randomString = 'TRK-';
             for ($i = 0; $i < $length; $i++) {
                 $randomString .= $characters[random_int(0, $charactersLength - 1)];
             }
@@ -76,12 +76,14 @@ class ShipmentController extends Controller
         $shipment = Shipment::create([
             'user_detail_id' => $userDetails->id,
             'parcel' => $input['parcel'],
+            'parcel_weight' => $input['parcel_weight'],
             'tracking_id' => $input['tracking_id'],
         ]);
 
         //Add all values to data array
         $data = [
             'parcel' => $shipment->parcel,
+            'parcel_weight' => $shipment->parcel,
             'sender_name' => $userDetails->sender_name,
             'sender_email' => $userDetails->sender_email,
             'sender_mobile' => $userDetails->sender_mobile,
@@ -103,7 +105,6 @@ class ShipmentController extends Controller
         //flash notification
         Session::flash('success', 'Shipment for '.$data['receiver_name'].' has been initiated');
         return redirect()->back();
-
     }
 
     /**
@@ -126,7 +127,8 @@ class ShipmentController extends Controller
     public function edit($id)
     {
         $shipment = Shipment::findOrFail($id);
-        return view('controlpanel.shipments.edit', compact('shipment' ));
+        $userDetail = UserDetails::where('id', $shipment->user_detail_id)->get()->first();
+        return view('controlpanel.shipments.edit', compact('shipment', 'userDetail' ));
     }
 
     /**
@@ -140,8 +142,30 @@ class ShipmentController extends Controller
     {
         //get ID
         $shipment = Shipment::findOrFail($id);
+        $userDetail = UserDetails::where('id', $shipment->user_detail_id)->get()->first();
 
-        $shipment->update($request->all());
+        $shipment->update([
+
+            'parcel' => $request->input('parcel'),
+            'parcel_weight' => $request->input('parcel_weight'),
+            'tracking_id' => $request->input('tracking_id'),
+
+        ]);
+
+        $userDetail->update([
+
+            'sender_name' => $request->input('sender_name'),
+            'sender_mobile' => $request->input('sender_mobile'),
+            'sender_country' => $request->input('sender_country'),
+            'sender_address' => $request->input('sender_address'),
+
+            'receiver_name' => $request->input('receiver_name'),
+            'receiver_email' => $request->input('receiver_email'),
+            'receiver_mobile' => $request->input('receiver_mobile'),
+            'receiver_country' => $request->input('receiver_country'),
+            'receiver_address' => $request->input('receiver_address'),
+
+        ]);
 
         //session notification
         Session::flash('success', 'Updated');

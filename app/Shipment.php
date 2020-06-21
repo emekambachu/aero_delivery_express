@@ -9,6 +9,7 @@ class Shipment extends Model
     protected $fillable = [
 
         'parcel',
+        'parcel_weight',
         'user_detail_id',
         'tracking_id',
         'is_active',

@@ -6,6 +6,8 @@
     Below is your tracking code<br>
     <strong>{{ $tracking_id }}</strong><br><br><br>
 
+    <strong>Parcel Type:</strong> {{ $parcel }}<br>
+    <strong>Parcel Weight:</strong> {{ $parcel_weight }}<br>
     <strong>Sender Name:</strong> {{ $sender_name }}<br>
     <strong>Sender Email:</strong> {{ $sender_email }}<br>
     <strong>Origin:</strong> {{ $sender_country }}<br>

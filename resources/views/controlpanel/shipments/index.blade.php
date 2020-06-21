@@ -22,6 +22,7 @@
                             <tr class="titles">
                                 <th>S/N</th>
                                 <th>Parcel</th>
+                                <th>Parcel Weight</th>
                                 <th>Sender</th>
                                 <th>Receiver</th>
                                 <th>Tracking Id</th>
@@ -39,6 +40,7 @@
                                     <tr>
                                         <td class="c-table__cell"> {{ $loop->iteration }} </td>
                                         <td class="c-table__cell"> {{ $ship->parcel }} </td>
+                                        <td class="c-table__cell"> {{ $ship->parcel_weight }}KG </td>
                                         <td class="c-table__cell"> {{ $ship->userDetail ? $ship->userDetail->sender_name: 'Not Assigned' }} - {{ $ship->userDetail ? $ship->userDetail->sender_email: 'Not Assigned' }} </td>
                                         <td class="c-table__cell"> {{ $ship->userDetail ? $ship->userDetail->receiver_name: 'Not Assigned' }} - {{ $ship->userDetail ? $ship->userDetail->receiver_email: 'Not Assigned' }} </td>
                                         <td class="c-table__cell"> {{ $ship->tracking_id }} </td>

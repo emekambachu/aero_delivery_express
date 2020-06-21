@@ -42,7 +42,7 @@ Route::get('shipment-status', static function () {
     return view('shipment-status');
 });
 
-Route::get('control-panel', 'UserCOntroller@dashboard');
+Route::get('control-panel', 'UserController@dashboard');
 
 Route::resource('control-panel/users', 'UserController');
 Route::resource('control-panel/parcels', 'ParcelController');

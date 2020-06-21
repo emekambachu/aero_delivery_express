@@ -15,6 +15,7 @@
             <p><strong>Shipment Details:</strong></p>
             <p>
                 <strong>Tracking ID:</strong> {{ $shipment->tracking_id }}<br>
+                <strong>Parcel:</strong> {{ $shipment->parcel }} ({{ $shipment->parcel_weight }}KG)<br>
                 <strong>Origin:</strong> {{ $shipment->userDetail ? $shipment->userDetail->sender_country : 'Not Assigned' }}<br>
                 <strong>Destination:</strong> {{ $shipment->userDetail ? $shipment->userDetail->receiver_country : 'Not Assigned' }}<br>
                 <strong>Sender:</strong> {{ $shipment->userDetail ? $shipment->userDetail->sender_name : 'Not Assigned' }}<br>
@@ -33,7 +34,9 @@
                     <select class="form-control" name="status" required>
                         <option>Pending</option>
                         <option>On Hold</option>
-                        <option>Ceased</option>
+                        <option>In Transit</option>
+                        <option>Received in Office</option>
+                        <option>Custom Clearance</option>
                         <option>Clarification</option>
                     </select>
                 </div>
