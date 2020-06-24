@@ -8,7 +8,6 @@ class UserDetails extends Model
 {
     protected $fillable = [
         'sender_name',
-        'sender_email',
         'sender_mobile',
         'sender_country',
         'sender_address',

@@ -41,12 +41,12 @@
                                         <td class="c-table__cell"> {{ $loop->iteration }} </td>
                                         <td class="c-table__cell"> {{ $ship->parcel }} </td>
                                         <td class="c-table__cell"> {{ $ship->parcel_weight }}KG </td>
-                                        <td class="c-table__cell"> {{ $ship->userDetail ? $ship->userDetail->sender_name: 'Not Assigned' }} - {{ $ship->userDetail ? $ship->userDetail->sender_email: 'Not Assigned' }} </td>
+                                        <td class="c-table__cell"> {{ $ship->userDetail ? $ship->userDetail->sender_name: 'Not Assigned' }} </td>
                                         <td class="c-table__cell"> {{ $ship->userDetail ? $ship->userDetail->receiver_name: 'Not Assigned' }} - {{ $ship->userDetail ? $ship->userDetail->receiver_email: 'Not Assigned' }} </td>
                                         <td class="c-table__cell"> {{ $ship->tracking_id }} </td>
                                         <td class="c-table__cell"> {{ $ship->userDetail ? $ship->userDetail->sender_country: 'Not Assigned' }} </td>
                                         <td class="c-table__cell"> {{ $ship->userDetail ? $ship->userDetail->receiver_country: 'Not Assigned' }}</td>
-                                        <td class="c-table__cell">{{date('jS \of F Y', strtotime($ship->created_at))}}</td>
+                                        <td class="c-table__cell">{{ $ship->created_at }}</td>
                                         <td>
                                             <a class="mb-2" href="{{ action('ShipmentHistoryController@shipmentCheckpoints', $ship->id) }}">
                                                 <button class="btn btn-sm btn-warning">

@@ -18,6 +18,7 @@ class CreateShipmentHistoriesTable extends Migration
             $table->id();
             $table->integer('shipment_id')->unsigned()->index();
 
+            $table->string('country');
             $table->string('location');
             $table->text('description');
             $table->string('status');

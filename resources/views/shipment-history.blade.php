@@ -102,6 +102,7 @@
             <thead>
             <tr>
                 <th scope="col">#</th>
+                <th scope="col">Country</th>
                 <th scope="col">Location</th>
                 <th scope="col">Description</th>
                 <th scope="col">Status</th>
@@ -114,6 +115,7 @@
                 @foreach($checkpoints as $checkpoint)
                     <tr>
                         <th scope="row">{{ $loop->iteration }}</th>
+                        <td>{{ $checkpoint->country }}</td>
                         <td>{{ $checkpoint->location }}</td>
                         <td>{{ $checkpoint->description }}</td>
                         <td>{{ $checkpoint->status }}</td>

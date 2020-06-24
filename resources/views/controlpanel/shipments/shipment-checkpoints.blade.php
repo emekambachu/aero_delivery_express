@@ -26,6 +26,7 @@
                             <thead>
                             <tr class="titles">
                                 <th>S/N</th>
+                                <th>Country</th>
                                 <th>Current Location</th>
                                 <th>Status</th>
                                 <th>Date</th>
@@ -37,6 +38,7 @@
                             @foreach($checkpoints as $check)
                                 <tr>
                                     <td class="c-table__cell"> {{ $loop->iteration }} </td>
+                                    <td class="c-table__cell"> {{ $check->country }} </td>
                                     <td class="c-table__cell"> {{ $check->location }} </td>
                                     <td class="c-table__cell"> {{ $check->status }} </td>
                                     <td class="c-table__cell">{{date('jS \of F Y', strtotime($check->created_at))}}</td>

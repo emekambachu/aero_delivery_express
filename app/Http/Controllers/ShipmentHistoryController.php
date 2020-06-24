@@ -53,6 +53,7 @@ class ShipmentHistoryController extends Controller
             'name' => $shipmentHistory->shipment->userDetail->receiver_name,
             'email' => $shipmentHistory->shipment->userDetail->receiver_email,
             'tracking_id' => $shipmentHistory->shipment->tracking_id,
+            'country' => $shipmentHistory->country,
             'location' => $shipmentHistory->location,
             'description' => $shipmentHistory->description,
             'status' => $shipmentHistory->status,

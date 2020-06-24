@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Jun 21, 2020 at 11:34 AM
+-- Generation Time: Jun 24, 2020 at 11:29 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.3.12
 
@@ -116,6 +116,7 @@ DROP TABLE IF EXISTS `shipment_histories`;
 CREATE TABLE IF NOT EXISTS `shipment_histories` (
   `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT,
   `shipment_id` int(10) UNSIGNED NOT NULL,
+  `country` varchar(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `location` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -130,10 +131,10 @@ CREATE TABLE IF NOT EXISTS `shipment_histories` (
 -- Dumping data for table `shipment_histories`
 --
 
-INSERT INTO `shipment_histories` (`id`, `shipment_id`, `location`, `description`, `status`, `is_active`, `created_at`, `updated_at`) VALUES
-(1, 7, 'Malasia', 'Parcel description', 'On Hold', 1, '2020-06-20 01:38:58', '2020-06-20 01:38:58'),
-(2, 7, 'Malasia', 'Parcel description', 'On Hold', 1, '2020-06-20 01:43:29', '2020-06-20 01:43:29'),
-(3, 7, 'Malasia', 'Parcel description', 'On Hold', 1, '2020-06-20 01:49:51', '2020-06-20 01:49:51');
+INSERT INTO `shipment_histories` (`id`, `shipment_id`, `country`, `location`, `description`, `status`, `is_active`, `created_at`, `updated_at`) VALUES
+(1, 7, '', 'Malasia', 'Parcel description', 'On Hold', 1, '2020-06-20 01:38:58', '2020-06-20 01:38:58'),
+(2, 7, '', 'Malasia', 'Parcel description', 'On Hold', 1, '2020-06-20 01:43:29', '2020-06-20 01:43:29'),
+(3, 7, 'Angola', 'Malasia', 'Parcel description', 'On Hold', 1, '2020-06-20 01:49:51', '2020-06-24 10:17:05');
 
 -- --------------------------------------------------------
 

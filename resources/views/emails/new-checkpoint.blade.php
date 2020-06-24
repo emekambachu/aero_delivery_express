@@ -2,7 +2,7 @@
 
 <h3>Hello {{ $name }}</h3>
 
-<p>Your Parcel just arrived at {{ $location }}<br>
+<p>Your Parcel just arrived at {{ $country }}, {{ $location }}<br>
     <strong>Tracking ID:</strong> {{ $tracking_id }} <br><br>
 
     Track your shipment here <a href="{{ url('track-shipment') }}"><strong>here</strong></a>

@@ -9,6 +9,7 @@ class ShipmentHistory extends Model
     protected $fillable = [
 
         'shipment_id',
+        'country',
         'location',
         'description',
         'status',

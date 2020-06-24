@@ -60,7 +60,6 @@ class ShipmentController extends Controller
         $userDetails = UserDetails::create([
 
             'sender_name' => $input['sender_name'],
-            'sender_email' => $input['sender_email'],
             'sender_mobile' => $input['sender_mobile'],
             'sender_country' => $input['sender_country'],
             'sender_address' => $input['sender_address'],
