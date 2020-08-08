@@ -47,6 +47,7 @@
                                 <div class="content">
                                     <span class="title">Phone</span>
                                     <p class="details">+442033899576</p>
+                                    <p class="details">+447451276447</p>
                                 </div>
                             </div>
                             <div class="single-contact-item">

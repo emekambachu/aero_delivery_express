@@ -91,7 +91,7 @@
                                         <i class="flaticon-businessman"></i>
                                     </div>
                                     <div class="content">
-                                        <h4 class="title">Our Expart Team
+                                        <h4 class="title">Our Expert Team
                                         </h4>
                                         <p>Treacherously far condescending invidiously menially and constitutionally into capriciously. </p>
                                     </div>

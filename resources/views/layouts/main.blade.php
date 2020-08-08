@@ -171,7 +171,7 @@
                             </li>
                             <li class="single-info-item">
                                 <div class="details">
-                                    +442033899576
+                                    +442033899576, +447451276447
                                 </div>
                             </li>
                             <li class="single-info-item">
