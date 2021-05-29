@@ -69,3 +69,7 @@ Auth::routes([
 
 // Perform logout
 Route::get('logout', 'Auth\LoginController@logout')->name('logout');
+
+// Github Deployment
+// Must disable csrf in Http/Middleware/VerifyCsrfToken
+Route::post('github/deploy', 'GithubDeploymentController@deploy');
